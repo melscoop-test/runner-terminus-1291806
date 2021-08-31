@@ -10,4 +10,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Style checks
-      run: ghaction_script.sh
+      run: ./ghaction_script.sh
