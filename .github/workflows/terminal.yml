@@ -10,4 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Style checks
-      run: ./ghaction_script.sh
+      run: |
+        sudo chmod 755 ghaction_script.sh
+        ./ghaction_script.sh
+         
