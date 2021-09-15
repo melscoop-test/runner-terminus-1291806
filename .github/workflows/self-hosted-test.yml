@@ -6,8 +6,9 @@ jobs:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v2
-    - name: Style checks
+    - name: Test script
       run: |
         sudo chmod 755 ghaction_script.sh
+        shell: 'script -q -e -c "bash --noprofile --norc -eo pipefail {0}"'
         ./ghaction_script.sh
          
