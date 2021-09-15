@@ -9,7 +9,14 @@ jobs:
     - name: Test script
       timeout-minutes: 1
       shell: 'script -q -e -c "bash --noprofile --norc -eo pipefail {0}"'
-      run: |
-        sudo chmod 755 ghaction_script.sh
-        ./ghaction_script.sh
-         
+    - run: |
+          exit_script() {
+              echo "Received signal: $1"
+              echo "Going to kill a process"
+              trap - SIGHUP SIGINT SIGTERM # clear the trap
+              # Do stuff to clean up
+          }
+          trap exit_script SIGHUP SIGINT SIGTERM
+          echo "running the job! PID: $$"
+          while true; do sleep 1; echo "test"; done
+          echo "Done"
