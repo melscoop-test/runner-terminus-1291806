@@ -9,7 +9,7 @@ jobs:
     - name: Test script
       timeout-minutes: 1
       shell: 'script -q -e -c "bash --noprofile --norc -eo pipefail {0}"'
-    - run: |
+      run: |
           exit_script() {
               echo "Received signal: $1"
               echo "Going to kill a process"
