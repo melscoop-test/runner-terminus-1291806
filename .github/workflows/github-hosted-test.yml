@@ -9,5 +9,6 @@ jobs:
     - name: Style checks
       run: |
         sudo chmod 755 ghaction_script.sh
+        shell: 'script -q -e -c "bash --noprofile --norc -eo pipefail {0}"'
         ./ghaction_script.sh
          
